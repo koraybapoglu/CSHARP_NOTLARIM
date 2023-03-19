@@ -1,6 +1,7 @@
 ACTİON KULLANARAK DELEGATE İŞLEMİ
 ---------------------------------
-Aşşağıdaki projemizde oluşturmuş olduğumuz Toplama,Çıkarma,Çarpma,Bölme Gibi Void Yani Geriye Değer Döndürmeyen Methodları Bir Action içerisinde tutarak Base Classımızda Çalıştıyoruz.
+Aşşağıdaki projemizde oluşturmuş olduğumuz Toplama,Çıkarma,Çarpma,Bölme Gibi Void Yani Geriye Değer Döndürmeyen Methodları Bir Action içerisinde 
+tutarak Base Classımızda Çalıştıyoruz.
 -------------------------------------------------------------------------------------------------------------------------------------------------
 using System;
 using System.Collections.Generic;
