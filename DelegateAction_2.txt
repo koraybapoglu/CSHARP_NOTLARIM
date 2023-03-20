@@ -1,0 +1,54 @@
+DELEGATE ACTİON 2. TÜRÜ
+------------------------
+Bu Kullanım Türünde Oluşturduğumuz Delegate Action Türü içine alacağı methodlar parametresi olmayan ve geriye değer
+döndürmeyen yani void olan methodları içine alabilir.
+Projede Kullanım Şekli Aşşağıdaki Gibidir.
+------------------------------------------------------------------------------------------------------------------------
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ExtensionMethodVeDeleGate
+{
+	internal class Program
+	{
+		ConsoleEkranAyarı ekranayarı = new ConsoleEkranAyarı();
+		Action Methodlarim = ConsoleEkranAyarı.ConsoleEkranRengi;
+		public static void Main(string[] args)
+		{
+			Console.WriteLine("Deneme123");
+			Console.WriteLine("Geçmek İçin Herhangi Bir Tuşa Basınız.");
+			Console.ReadLine();
+			Program program = new Program();
+			Methodlarım methodlar = new Methodlarım();
+			program.Methodlarim += methodlar.EkranaTemizle;
+			program.Methodlarim += methodlar.EkranaYaziYaz;
+			program.Methodlarim.Invoke();
+			Console.ReadLine();
+		}
+		public class ConsoleEkranAyarı
+		{
+			public static void ConsoleEkranRengi()
+			{ 
+				Console.BackgroundColor = ConsoleColor.Black;
+				Console.ForegroundColor = ConsoleColor.Green;
+			}
+		}
+		public class Methodlarım
+		{
+			public void EkranaTemizle()
+			{
+				Console.Clear();
+			}
+			public void EkranaYaziYaz()
+			{
+				Console.WriteLine("HELLO WORLD");
+			}
+		}
+	}
+}
+
+
