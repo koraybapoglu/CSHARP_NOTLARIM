@@ -1,0 +1,103 @@
+DELEGATE FUNCTİON
+-----------------
+FUNCTİON NEDİR ?
+FUNCTİON GERİYE DEĞER DÖNDÜREN AYNI ZAMANDA İÇİNE DEĞER ALAN METHODLARIMIZI TEK BİR ÇATI ALTINDA TUTABİLDİĞİMİZ BİR YAPIDIR.
+-----------------------------------------------------------------------------------------------------------------------------
+PROJE:
+Projemizde HesaplamaMethodları Adı altında bir function oluşturarak Hesaplamaİslemleri Classımızda oluşturduğumuz Methodları İçerisinde Tutarak Base Classımızda Kullanıyoruz.
+----------------------------------------------------------------------------------------------------------------------
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ExtensionMethodVeDeleGate
+{
+	internal class Program
+	{
+		Hesaplamaİslemi hesaplamaislemi = new Hesaplamaİslemi();
+		Func<int, int, int[]> hesaplamamethodlari = Hesaplamaİslemi.Toplama;
+		static void Main(string[] args)
+		{
+
+			Program program = new Program();
+			program.hesaplamamethodlari += Hesaplamaİslemi.Cikarma;
+			program.hesaplamamethodlari += Hesaplamaİslemi.Carpma;
+			program.hesaplamamethodlari += Hesaplamaİslemi.Bolme;
+			ConsoleEkranAyarı ekranayarı = new ConsoleEkranAyarı();
+			ekranayarı.ConsoleEkranRengi();
+			Console.WriteLine("1. Sayıyı Giriniz:");
+			int sayi = Convert.ToInt32(Console.ReadLine());
+			Console.WriteLine("2. Sayıyı Giriniz:");
+			int sayi2 = Convert.ToInt32(Console.ReadLine());
+			foreach (Func<int, int, int[]> hesaplama in program.hesaplamamethodlari.GetInvocationList())
+			{
+				if (hesaplama.Method.Name == "Toplama")
+				{
+					foreach (var item in hesaplama(sayi, sayi2))
+					{
+						Console.WriteLine("Toplama İşlemi Sonucunuz= " + item);
+					}
+				}
+				else if (hesaplama.Method.Name == "Cikarma")
+				{
+					foreach (var item in hesaplama(sayi, sayi2))
+					{
+						Console.WriteLine("Çıkarma İşlemi Sonucunuz= " + item);
+					}
+				}
+				else if (hesaplama.Method.Name == "Carpma")
+				{
+					foreach (var item in hesaplama(sayi, sayi2))
+					{
+						Console.WriteLine("Çarpma İşlemi Sonucunuz= " + item);
+					}
+				}
+				else if(hesaplama.Method.Name=="Bolme")
+				{
+					foreach (var item in hesaplama(sayi, sayi2))
+					{
+						Console.WriteLine("Bölme İşlemi Sonucunuz= " + item);
+					}
+				}
+				else
+				{
+					Console.WriteLine("HATA 101");
+				}
+			}
+			Console.ReadLine();
+		}
+		}
+}
+public class Hesaplamaİslemi
+{
+	public static int[] Toplama(int sayi, int sayi2)
+	{
+		return new int[] { sayi + sayi2 };
+	}
+	public static int[] Cikarma(int sayi, int sayi2)
+	{
+		return new int[] { sayi - sayi2 };
+	}
+	public static int[] Carpma(int sayi, int sayi2)
+	{
+		return new int[] { sayi * sayi2 };
+	}
+	public static int[] Bolme(int sayi, int sayi2)
+	{
+		return new int[] { sayi / sayi2 };
+	}
+
+}
+public class ConsoleEkranAyarı
+{
+	public void ConsoleEkranRengi()
+	{
+		Console.Clear();
+		Console.BackgroundColor = ConsoleColor.Black;
+		Console.ForegroundColor = ConsoleColor.Green;
+	}
+}
+
