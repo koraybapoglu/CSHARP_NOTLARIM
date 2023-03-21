@@ -1,0 +1,112 @@
+KAPSÜLLEME
+----------
+Kapsülleme Nedir ?
+------------------
+Kapsülleme OOP İşlemlerinden Biridir.Aldığımız veriyi property kullanarak veriyi işleme,
+veriyi asıl tutulacak gizli field(Alan) içerisinde tutmaktır. OOP Kullanmamızın ve
+kapsülleme işleminin kullanımın asıl amacı esnek,nesne tabanlı ve okunabilir proje 
+yapmamızdır.
+------------------------------------------------------------------------------------------
+ÖRNEK 1 KAPSÜLLEME KULLANMADAN:
+------------------------------------------------------------------------------------------
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ExtensionMethod
+{
+	internal class Program
+	{
+		static void Main(string[] args)
+		{
+			Console.WriteLine("Lütfen Sayı Giriniz:");
+			int x = 0;
+			bool Key = int.TryParse(Console.ReadLine(), out x);
+			if (Key == true)
+			{
+				Console.WriteLine("Sisteme Girmiş Olduğunuz Sayı: " + x);
+				Console.WriteLine("--------------------------------------");
+				Console.WriteLine("Sisteme Doğru Giriş Yaptınız.");
+			}
+			else
+			{
+				Console.WriteLine("Sisteme Yanlış Giriş Yaptınız.");
+			}
+			Console.ReadLine();
+           }      
+     }       
+}
+----------------------------------------------------------------------------------------------
+ÖRNEK 2 KAPSÜLLEME KULLANARAK:
+----------------------------------------------------------------------------------------------
+Kapsülleme.Cs Adlı Classımızın Kodları:
+---------------------------------------
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ExtensionMethod
+{
+	internal class Kapsülleme
+	{
+		private static int _GirilenSayi=0;
+		public static string GirilenSayi {
+			get 
+			{
+				return Convert.ToString(_GirilenSayi); 
+			}
+			set
+			{
+				bool Key = int.TryParse(value, out  _GirilenSayi);
+				if (Key==true)
+				{
+					Console.WriteLine("Sisteme Doğru Giriş Yaptınız ");
+				}
+				else 
+				{
+					Console.WriteLine("Sisteme Yanlış Giriş Yaptınız ");
+				}
+			} 
+		}
+	}
+}
+-------------------------------------
+Program.Cs Base Classımızın Kodları:
+-------------------------------------
+Base Classımızda Yazdığımız Kodlar İle ilk olarak GirilenSayi Adlı Propertyimizin SET bloğunu
+çalıştırarak veri ekleme işlemi yaptık. Fakat bunu yaparken aldığımız veriyi inceleyerek gizli
+olan fieldımızın içine ekleme işlemi yaptık.
+Ardından Propertymizin GET bloğunu çalıştırarak base classımızdan ulaşılamayan gizli fieldımızdan
+veri çekme işlemi yaptık.
+-------------------------------------
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ExtensionMethod
+{
+	internal class Program
+	{
+		static void Main(string[] args)
+		{
+			Console.WriteLine("Lütfen Sayı Giriniz:");
+			Kapsülleme.GirilenSayi =Console.ReadLine();
+			Console.WriteLine("Girdiğiniz Sayı=" + Kapsülleme.GirilenSayi);
+			Console.ReadLine();
+		    
+		}
+	}
+}
+	
+
+
