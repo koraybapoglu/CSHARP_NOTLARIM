@@ -27,7 +27,8 @@ namespace ExtensionMethod
 		{
 			Console.WriteLine("Lütfen Sayı Giriniz:");
 			double x =Convert.ToDouble(Console.ReadLine());
-			Console.WriteLine("Alınan Sayının Karekökü:"+x.KarekokAl());
+			Console.WriteLine("GirilenDeğer: "+x.ToString());
+			Console.WriteLine("Alınan Sayının Karekökü: "+x.KarekokAl());
 			Console.WriteLine("Alınan Sayının Karesi: " + ExtensionClass.KaresiniAl(x));
 			Console.ReadLine();
 			
@@ -45,6 +46,10 @@ namespace ExtensionMethod
 		}
 	}
 }
+	
+
+
+
 	
 
 
