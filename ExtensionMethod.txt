@@ -1,0 +1,50 @@
+EXTENSİON METHOD
+----------------
+EXTENSİON METHOD NEDİR ?
+ExtensionMethod aynı .ToString gibi ilave olan methodlardır.c# dilinin bizim için eklediği
+standart olan methodlara ekstradan method eklemek istediğimizde Extension Methodlar 
+yazarak projemizde kullanabiliriz.
+-------------------------------------------------------------------------------------------
+Projede Kullandığımız KarekokAl Methodu Bir Extension Methoddur.KaresiniAl Methodu ise
+Normal Kullandığımız bir method tipidir.
+Fark olarak ExtensionMethodlarda Parametresine This Kelimesini Eklememizdir.
+-------------------------------------------------------------------------------------------
+KULLANIMI :
+----------
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ExtensionMethod
+{
+	internal class Program
+	{
+		static void Main(string[] args)
+		{
+			Console.WriteLine("Lütfen Sayı Giriniz:");
+			double x =Convert.ToDouble(Console.ReadLine());
+			Console.WriteLine("Alınan Sayının Karekökü:"+x.KarekokAl());
+			Console.WriteLine("Alınan Sayının Karesi: " + ExtensionClass.KaresiniAl(x));
+			Console.ReadLine();
+			
+		}
+	}
+	public static class ExtensionClass
+	{
+		public static double KarekokAl(this double x)
+		{
+			return Math.Sqrt(x);
+		}
+		public static double KaresiniAl(double x) 
+		{
+			return x * x;
+		}
+	}
+}
+	
+
+
