@@ -4,7 +4,7 @@ AsenkronProgramming Nedir ?
 ---------------------------
 Asenkron Programlama tek bir iş parçasının tamamlanmasını beklemek yerine diğer belirlediğimiz işlemler
 bunlara method örneği verebiliriz diğer metodlarada geçerek zaman kazanmasıdır. Bu sayede yazmış olduğumuz
-projede çok uzun iş gerektiren bir method veya başka bir işlem var ise asenkron işlemi yaparak zaman
+projede çok uzun zaman gerektiren bir method veya başka bir işlem var ise asenkron işlemi yaparak zaman
 kazanabilir aynı zamanda donma ve kasmaların önüne geçebiliriz.
 ----------------------------------------------------------------------------------------------------------
 ASENKRON PROGRAMMİNG ÖRNEK PROJE:
