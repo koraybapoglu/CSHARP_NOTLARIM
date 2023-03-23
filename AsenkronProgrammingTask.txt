@@ -54,6 +54,11 @@ Ana İşlem Başlatıldı !
 İşlem Sona Erdi !
 Uzatma İşlemi Başladı !
 Uzatma İşlemi Bitti !
+-----------------------------------------------------------------------------------------------------------------
+Normalde main methodumuzda önceden belirlemiş olduğumuz bir methodu çalıştırmak istediğimizde direk çalıştırır ve
+bitmeden diğer yazdığımız kod satırlarını okumazdı ve bu da gecikme yaşatırdı ancak AsenkronProgramming ve Task 
+kullanarak main methodumuzda çalıştırmak istediğimiz methodu zaman kaybetmemek amacıyla direk methodun bitmesini
+beklemeden diğer kodları okuyor ne zaman oluşturduğumuz methodu işlerse o zaman çıktısını veriyor.
 
 
 
