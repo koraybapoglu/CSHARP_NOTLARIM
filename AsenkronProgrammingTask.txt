@@ -1,0 +1,61 @@
+TASK İŞLEMLERİ
+--------------
+ASP.NET de Task Sınıfı asenkron programlama için kullanılan bir yapıdır.Task sınıfı bir methodu çağırdığımızda
+işlem tamamlanana kadar beklememizi engeller ve uygulamanın performansını arttırır.
+--------------------------------------------------------------------------------------------------------------
+TASK İŞLEMLERİ PROJE:
+---------------------
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
+
+namespace AsenkronProgrammingVeTuple
+{
+	internal class Program
+	{
+		public static void Main()
+		{
+			Console.WriteLine("Ana İşlem Başlatıldı !");
+			Task task = Task.Run(() => LongOperation());
+			Console.WriteLine("İşlem Devam Ediyor !");
+			task.Wait();
+			Console.WriteLine("İşlem Sona Erdi !");
+			Console.ReadLine();
+		}
+
+		static void LongOperation()
+		{
+			Console.WriteLine("Uzatma İşlemi Başladı !");
+			Task.Delay(5000).Wait();
+			Console.WriteLine("Uzatma İşlemi Bitti !");
+		}
+	}
+}
+----------------------------------------------------------------------------------------------------------------
+Projede Kullandığımız task.run methodu ile methodumuzu çalıştırıyoruz.
+task.wait methodu ile methodumuz tamamlanana kadar bekle diyoruz ve ana main methodumuz bu sayede o method
+tamamlanana kadar bekliyor.LongOperation Methodu ile Uzatma İşlemi Yapıyoruz. task.delay(5000).wait diyerek
+task sınıfımıza 5 saniyelik bir gecikme süresi vererek işlemi 5 saniyeliğine uzatıyoruz.
+----------------------------------------------------------------------------------------------------------------
+Projemizin Çıktısı:Ana İşlem Başlatıldı !
+İşlem Devam Ediyor !
+Uzatma İşlemi Başladı !
+Uzatma İşlemi Bitti !
+İşlem Sona Erdi !
+
+-----------------------------------------------------------------------------------------------------------------
+Task.wait methodu kullanmadan ve LongOperationdaki 5 saniyelik gecikmeyi kaldırdığımızda kodumuzun çıktısı:
+-----------------------------------------------------------------------------------------------------------------
+Ana İşlem Başlatıldı !
+İşlem Devam Ediyor !
+İşlem Sona Erdi !
+Uzatma İşlemi Başladı !
+Uzatma İşlemi Bitti !
+
+
+
+
+
