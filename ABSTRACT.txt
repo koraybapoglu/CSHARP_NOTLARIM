@@ -1,0 +1,195 @@
+ABSTRACT METHOD
+--------------------
+ABSTRACT NEDİR ?
+-------------------------------------------------------
+Abstract farklı classlarda belirtilmiş bir methodu kalıtım alan diğer classlarda zorunlu olarak kullanmamız gerektiği
+ve aynı zamanda kalıtım alan her classta farklı çalışmasını istediğimiz zamanlarda kullandığımız bir yapıdır.
+---------------------------------------------------------------------------------------------------------------------
+
+KULLANIMI:
+----------------
+
+HAYVANLAR CLASS:
+----------------
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ABSTRACT
+{
+	internal abstract class Hayvanlar
+	{
+		public string HayvanAdi { get; set; }
+		public string HayvanBeslenmeTuru { get; set; }
+		public int HayvanAyakSayisi { get; set; }
+		public abstract void HayvanSesi();
+	}
+}
+
+
+KÖPEK CLASS:
+------------
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ABSTRACT
+{
+	internal class Köpek : Hayvanlar
+	{
+		public Köpek() 
+		{
+			HayvanAdi = "Köpek";
+			HayvanAyakSayisi = 4;
+			HayvanBeslenmeTuru = "Etçil";
+		}	
+		public override void HayvanSesi()
+		{
+			Console.WriteLine("Hav Hav");
+		}
+	}
+}
+
+
+KEDİ CLASS
+----------
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ABSTRACT
+{
+	internal class Kedi : Hayvanlar
+	{
+		public Kedi() 
+		{
+			HayvanAdi = "Kedi";
+			HayvanAyakSayisi = 4;
+			HayvanBeslenmeTuru = "Etçil";
+		}
+		public override void HayvanSesi()
+		{
+			Console.WriteLine("Miyav");
+		}
+	}
+}
+
+
+PROGRAM(MAİN) CLASS:
+--------------------
+
+***************
+(UZUN VERSİYON)
+---------------
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ABSTRACT
+{
+	internal class Program
+	{
+		static void Main(string[] args)
+		{
+			Console.WriteLine("ABSTRACT GİRİŞ ");
+			Console.WriteLine("***********************************");
+			Console.WriteLine("");
+			Köpek köpek = new Köpek();
+			Console.WriteLine(köpek.HayvanAdi);
+			Console.WriteLine(köpek.HayvanBeslenmeTuru);
+			Console.WriteLine(köpek.HayvanAyakSayisi);
+			köpek.HayvanSesi();
+			Kedi kedi = new Kedi();
+			Console.WriteLine();
+			Console.WriteLine("***********************************");
+			Console.WriteLine("");
+			Console.WriteLine(kedi.HayvanAdi);
+			Console.WriteLine(kedi.HayvanBeslenmeTuru);
+			Console.WriteLine(kedi.HayvanAyakSayisi);
+			kedi.HayvanSesi();
+			Console.WriteLine();
+			Console.WriteLine("***********************************");
+			Console.WriteLine("");
+			Console.ReadLine();
+			//******************************************************************
+
+		}
+	}
+}
+
+***************
+(KISA VERSİYON)
+---------------
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ABSTRACT
+{
+	internal class Program
+	{
+		static void Main(string[] args)
+		{
+
+			List<Hayvanlar> hayvanlars = new List<Hayvanlar>();
+			hayvanlars.Add(new Köpek());
+			hayvanlars.Add(new Kedi());
+			Console.WriteLine("ABSTRACT GİRİŞ ");
+			Console.WriteLine("***********************************");
+			Console.WriteLine("");
+			foreach (Hayvanlar hayvan in hayvanlars)
+			{
+				Console.WriteLine(hayvan.HayvanAdi);
+				Console.WriteLine(hayvan.HayvanBeslenmeTuru);
+				Console.WriteLine(hayvan.HayvanAyakSayisi);
+				hayvan.HayvanSesi();
+				Console.WriteLine();
+				Console.WriteLine("***********************************");
+				Console.WriteLine("");
+			}
+			Console.ReadLine();
+		}
+	}
+}
+-------------------------------------------------KOD ÇIKTISI----------------------------------------------------------------------
+ABSTRACT GİRİŞ
+***********************************
+
+Köpek
+Etçil
+4
+Hav Hav
+
+***********************************
+
+Kedi
+Etçil
+4
+Miyav
+
+***********************************
+----------------------------------------------------------------------------------------------------------------------------------,
+
+
+----------------------------------------------------------------------------------------------------------------------------------
+KISA VERSİYON İLE UZUN VERSİYON ARASINDAKİ FARK NEDİR ?
+-------------------------------------------------------
+Uzun versiyonda kalıtım alan classlardaki ortak olarak kullanılan propertyleri tek tek manuel olarak ekrana yazdırdık.
+Fakat Kısa versiyonda Hayvanlar adı altında bir list oluşturarak içerisine köpek ve kedi classlarını tanımladık.
+foreach döngüsü ile Ata class yani Hayvanlar yazarak hayvan adı altında hayvanlars içerisindeki ortak olan Hayvanlar
+propertylerini ekrana yazdırdık.
+-----------------------------------------------------------------------------------------------------------------------------------
+
