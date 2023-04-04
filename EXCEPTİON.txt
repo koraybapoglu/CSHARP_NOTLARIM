@@ -1,0 +1,174 @@
+EXCEPTİON
+---------
+EXCEPTİON NEDİR ?
+****************************
+
+Exception bir programın normal yürütmesini kesintiye uğratan bir hatadır.Bir hata oluştuğunda program normal
+yürütmesini durdurur ve ekrana hata mesajı verir.Bu verilen mesaj hatanın türünü ve nerede oluştuğunu
+bizlere verir.
+
+-------------------------------------------------------------------------------------------------------------
+ASP.NET'te birçok farklı türde isnisna vardır.En çok karşılaşılan Hata Türleri aşşağıdaki gibidir.
+
+-ArgumentNullException: Bir yöntem veya özellik,null bir değerle çağrıldığında bu hata fırlatılır.
+
+-ArgumentException:Bir yöntem veya özellik,geçersiz bir argümanla çağrıldığında bu hata fırlatılır.
+
+-InvalidOperationException:Yöntem,geçerli bir durumda değilken bu hata fırlatılır.
+
+-InvalidOperationException: Yöntem, geçerli bir durumda değilken bu istisna fırlatılır.
+
+-NotSupportedException: Bir yöntem, çağrıldığında desteklenmeyen bir işlem veya özellik olduğunda bu hata fırlatılır.
+
+-OutOfMemoryException: Sistem belleği tükendiğinde bu hata fırlatılır.
+
+-StackOverflowException: Yığın aşımı meydana geldiğinde bu hata fırlatılır.
+
+---------------------------------------------------------------------------------------------------------------
+Peki biz bu hataları yakalayıp yaptığımız projelerde kullanıcıya bilgi olarak verebilir miyiz ?
+
+Cevabı Evet.
+
+Kullanımı Aşşağıdaki Gibidir.
+-----------------------------
+KODLAR:
+-------
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Exception
+{
+	internal class Program
+	{
+		static void Main(string[] args)
+		{
+			try
+			{
+				Console.WriteLine("Lütfen Bir sayı Giriniz:");
+				int sayı = int.Parse(Console.ReadLine());
+				if (sayı > 0)
+				{
+					Console.WriteLine("Girdiğiniz sayı 0'dan büyüktür.");
+					Console.WriteLine("Girilen Sayı= " + sayı);
+				}
+				else if (sayı < 0)
+				{
+					Console.WriteLine("Girdiğiniz sayı 0'dan küçüktür.");
+					Console.WriteLine("Girilen Sayı= " + sayı);
+				}
+				else if (sayı == 0)
+				{
+					Console.WriteLine("Girdiğiniz Sayı 0 a eşittir.");
+				}
+			}
+			catch (FormatException ex)
+			{
+				Console.WriteLine("Bir Hata İle Karşılaşıldı !");
+				Console.WriteLine("*********************************");
+				Console.WriteLine("Hata Açıklaması: " + ex.Message);
+				
+				Console.WriteLine("Hata Yığını:\n " + ex.StackTrace);
+
+			}
+			catch (ArgumentNullException argn) 
+			{
+				Console.WriteLine("Bir Hata İle Karşılaşıldı !");
+				Console.WriteLine("**********************************");
+				Console.WriteLine("Hata Açıklaması: " + argn.Message);
+				Console.WriteLine("************************************************");
+				Console.WriteLine("");
+				Console.WriteLine("Hata Yığını:\n "+argn.StackTrace);
+			}
+			Console.ReadLine();
+
+		}
+	}
+}
+-------------------------------------------------------------------------------------------------------------
+Yaptığımız uygulamada try catch bloğu kullanarak hata yakalamaya çalışıyoruz. Kullanıcıdan almış olduğumuz
+sayıyı integer veri tipinde bulunan sayı değişkenine atıyoruz.Try bloğunda sayılarla ilgili işlemler
+yapıyoruz.Catch bloğunda bir hata yakalarsak FormatException ile Ekrana Aldığımız FormatException Hatasının
+Mesajını Kullanıcıya Veriyoruz.
+--------------------------------------------------------------------------------------------------------------
+
+
+PROJEYİ BAŞLATTIKTAN SONRA SİSTEM BİZDEN SAYI GİRMEMİZİ İSTEDİĞİNDE EĞER SAYI YERİNE HARF VEYA BAŞKA BİRŞEY
+GİRERSEK EKRAN ÇIKTISI BU ŞEKİLDE OLUYOR:
+-----------------------------------------
+Lütfen Bir sayı Giriniz:
+A
+Bir Hata İle Karşılaşıldı !
+*********************************
+Hata Açıklaması:Giriş dizesi doğru biçimde değildi.
+
+Hata Satır Kodu:
+   konum: System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   konum: System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   konum: System.Int32.Parse(String s)
+   konum: Exception.Program.Main(String[] args) C:\Users\koray\source\repos\Exception\Exception\Program.cs içinde: satır 16
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
