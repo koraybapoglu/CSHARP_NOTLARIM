@@ -8,7 +8,7 @@ yürütmesini durdurur ve ekrana hata mesajı verir.Bu verilen mesaj hatanın t�
 bizlere verir.
 
 -------------------------------------------------------------------------------------------------------------
-ASP.NET'te birçok farklı türde isnisna vardır.En çok karşılaşılan Hata Türleri aşşağıdaki gibidir.
+ASP.NET'te birçok farklı türde hata vardır.En çok karşılaşılan hata türleri aşşağıdaki gibidir.
 
 -ArgumentNullException: Bir yöntem veya özellik,null bir değerle çağrıldığında bu hata fırlatılır.
 
