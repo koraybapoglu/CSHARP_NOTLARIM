@@ -1,0 +1,187 @@
+VALUE AND REFERENCE TYPES(DEĞER VE REFERANS TİPLERİ)
+----------------------------------------------------
+DEĞER VE REFERANS TİPLERİ NELERDİR ?
+-------------------------------------
+İLK OLARAK DEĞER İLE BAŞLAMAK GEREKİRSE C# DİLİNDE KULLANMIŞ OLDUĞUMUZ İNT,DOUBLE,BOOL,BYTE,SBYTE,CHAR,DECİMAL,FLOAT,
+UİNT,LONG,ULONG,SHORT,USHORT BİR DEĞER TİPİDİR.
+
+PEKİ NEDİR BU DEĞER TİPLERİ ?
+------------------------------
+DEĞER TİPLERİNİ AÇIKLAMAK GEREKİRSE İLK OLARAK BİLGİSAYARDAKİ RAMİ ANLATMAK GEREKİR RAM İKİYE AYRILIR
+
+STACK VE HEAP.
+
+-----------------------------
+PEKİ NEDİR BU STACK VE HEAP ?
+---------------------------------------------------
+
+STACK NEDİR ?
+-------------
+
+STACK BİR PROGRAMI ÇALIŞTIRDIĞIMIZDA RAMDE GEÇİCİ OLARAK VERİLERİN TUTULDUĞU YERDİR.
+--------------------------------------------------------------------------------------------
+HEAP= HEAP PROGRAM ÇALIŞTIĞI SIRADA DİNAMİK OLARAK OLUŞTURULAN VE KULLANILAN BELLEK BÖLGESİDİR.
+BURADA VERİLERİN YERLERİ BİLGİSAYAR TARAFINDAN BELİRLENİR VE BİR GÖSTERİCİNİN POİNTER ADRESİYLE İŞARETLENİR.
+
+
+ÖRNEK VERMEK GEREKİRSE STACK KISMINDA OLUŞTURULMUŞ BİR VERİNİN HEAP KISMINDA BİR GÖSTERGESİ VARDIR.
+STACK KISMINDA X VERİSİ HEAP KISMINDA 101 KOD ADIYLA HEAP KISMINDA TUTULUR.
+BİZ PROGRAMIMIZDA X VERİSİNİ ÇAĞIRMAK İSTEDİĞİMİZDE HEAP KISMI GELİR.
+---------------------------------------------------------------------
+
+
+STACK DEDİĞİMİZ KISIMDA DEĞER VERİ TİPLERİ TUTULUR.YANİ HEAP KISMINDA HERHANGİ BİR GÖSTERGESİ BULUNMAMAKTADIR.
+------------------------------------------------------------------------------------------------------
+
+
+REFERANS TİPLERİ NEDİR ?
+---------------------------------
+REFERANS TİPLER RAMİN HEAP KISMINDA GÖSTERGESİ BULUNAN TÜRLERDİR.
+
+
+NELERDİR PEKİ BU REFERANS TİPLER ?
+----------------------------------
+REFERANS TİPLER=OBJECT,CLASS,İNTERFACE,DELEGATE,ARRAY,DYNAMİC REFERANS TÜRLERİDİR.
+-----------------------------------------------------------------------------------
+
+YUKARIDA BELİRTMEDİĞİM TEK BİR VERİ TİPİ BULUNMAKTADIR O DA "STRİNG" VERİ TİPİDİR.
+
+PEKİ STRİNG VERİ TİPİ DEĞER Mİ YOKSA REFERANS TİPİ MİDİR ?
+----------------------------------------------------------
+
+STRİNG VERİ TİPİ ASLINDA BİR REFERANS TİPİDİR.C# DİLİNDE BİR DEĞER OLARAK ÇALIŞIR.
+
+----------------------------------------------------------------------------------------------------
+
+
+KODLAR:
+*************************
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ValueAndReferenceTypes
+{
+	internal class Program
+	{
+		static void Main(string[] args)
+		{
+			/* VALUE */
+			int sayi = 10;
+			int sayi2 = sayi;
+			sayi2 = 15;
+			Console.WriteLine(sayi);
+			Console.WriteLine("----------------------------\n");
+			/* ------------------------------------------------------ */
+			/* REFERENCE TYPES */
+			string[] sehirler1 = new string[] { "Ankara", "İstanbul", "İzmir" };
+			string[] sehirler2 = new string[] { "Adana", "Bursa", "Bolu" };
+			sehirler2 = sehirler1;
+			sehirler2[0] = "Eskişehir";
+			Console.WriteLine(sehirler1[0]);
+			Console.WriteLine("----------------------------\n");
+			/* STRİNG */
+			string ad = "KORAY";
+			string ad2 = ad;
+			ad2 = "KORAY BAPOĞLU";
+			Console.WriteLine(ad);
+			Console.ReadLine();
+		}
+	}
+}
+
+**************************************************************************************************************
+EKRAN ÇIKTISI:
+--------------
+10
+----------------------------
+
+Eskişehir
+----------------------------
+
+KORAY
+----------------------------------------------------------------------------------------------------------------------
+
+*****************************************************************************************************************
+
+YUKARIDAKİ ÖRNEKTE OLUŞTURMUŞ OLDUĞUMUZ SAYİ ADLI İNT DEĞERİ 10 DUR. SAYİ2 İSE SAYİ ADLI İNT VERİ TİPİNİ TUTMAKTADIR.
+
+YANİ SAYİ2 ARTIK 10 DUR.
+
+FAKAT BİZ SAYİ2 DEĞİŞKENİNİ 15 YAPMAK İSTEDİĞİMİZDE SAYİ DEĞİŞKENİ 10 MU 15 Mİ OLMALIDIR ?
+
+TABİ Kİ SAYİ DEĞİŞKENİ 10 DUR. ÇÜNKÜ NEDENİ KENDİSİNİN BİR DEĞER TİPİ OLMASIDIR. RAMİN STACK KISMINDA TUTULMASIDIR.
+
+*İKİNCİ ÖRNEK*
+---------------
+
+İKİNCİ ÖRNEĞE GELİCEK OLURSAK SEHİRLER1 ADI ALTINDA STRİNG VERİ TİPİNDE DİZİMİZDİR. İÇİNDE 3 FARKLI ŞEHİR
+
+BULUNDURMAKTADIR. SEHİRLER2 ADLI STRİNG VERİ TİPİNDE DİZİMİZ İSE SEHİRLER1 DİZİMİZİN İÇİNDE TUTTUĞU 3 FARKLI ŞEHİRDEN
+
+FARKLI ŞEHİRLER TUTMAKTADIR.
+
+SEHİRLER2 ADLI DİZİMİZİ SEHİRLER1 ADLI DİZİMİZLE EŞLEŞTİRDİĞİMİZDE ARTIK SEHİRLER2 ADLI DİZİMİZİN YENİ VERİLERİ SEHİRLER1
+
+ADLI DİZİMİZ İLE AYNIDIR.
+
+EŞİTLEME YAPTIKTAN SONRA SEHİRLER2 ADLI DİZİMİZİN 0. İNDEKSİ OLAN ANKARA VERİSİNİ ESKİŞEHİR DİYE DEĞİŞTİRDİĞİMİZDE SEHİRLER1
+
+ADLI DİZİMİZİN 0. İNDEKSİ ANKARA OLARAK MI KALIR ?
+
+TABİ Kİ HAYIR.
+
+ARTIK SEHİRLER1 ADLI DİZİMİZİN 0. İNDEKSİ ESKİŞEHİRDİR. BUNUN NEDENİ İSE OLUŞTURDUĞUMUZ ARRAY(DİZİ) LERİMİZ BİR REFERANS TİPİ
+
+OLMASIDIR.
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+BİRAZ DAHA AÇIKLAMAK GEREKİRSE SEHİRLER1 ADI STACK KISIMDA İÇİNDEKİ VERİLERDE HEAP KISMINDA 101 KOD ADI İLE
+
+TUTULDUĞUNU FARZEDELİM.
+
+SEHİRLER2 ADI STACK KISIMDA İÇİNDEKİ VERİLERDE HEAP KISMINDA 102 KOD ADI İLE TUTULDUĞUNU DÜŞÜNELİM.
+
+BİZ SEHİRLER2=SEHİRLER1 DEDİĞİMİZDE SEHİRLER2 NİN HEAP KISMI ARTIK 101 KOD ADLI SEHİRLER1 İN KULLANDIĞI 
+
+HEAP KISMI İLE EŞLEŞTİRMİŞ OLUYORUZ.
+
+SEHİRLER2 DEKİ HERHANGİ BİR İNDEKSLİ VERİYİ DEĞİŞTİRMEK İSTEDİĞİMİZDE BUNDAN DOĞRUDAN 101 KOD ADLI HEAP KISMI ETKİLENİYOR.
+
+HALİYLE OTOMATİK OLARAKTA SEHİRLER1 ADLI DİZİMİZİN HEAP KISMI ETKİLENMİŞ OLUYOR.
+
+BUNDAN KAYNAKLI OLARAKTA SEHİRLER1 ADLI DİZİMİZİN 0. İNDEKSİNİ EKRANA YAZDIRMAK İSTEDİĞİMİZDE EKRANA ANKARA YAZDIRMASI
+
+GEREKİRKEN ESKİŞEHİR YAZDIRIYOR.
+-----------------------------------------------------------------------------------------------------------------------------------
+
+PEKİ 102 KOD ADI İLE RAMİN HEAP KISMINDA TUTULAN VERİYE NE OLDU ?
+-----------------------------------------------------------------
+İŞTE BURADA C# DİLİNİN BİZE SUNMUŞ OLDUĞU ÖZELLİK OLAN GARBAGE COLLECTOR İLE RAMDEN KULLANILMAYAN KOD ADLI HEAP KISIMLARI
+
+TEMİZLENİYOR VE BU SAYEDE RAM TASARRUFUNDA BULUNUYORUZ.
+
+--------------------------------------------------------------------------------
+
+*ÜÇÜNCÜ ÖRNEK*
+--------------
+OLUŞTURMUŞ OLDUĞUMUZ AD ADLI STRİNG VERİ TİPİNE SAHİP DEĞİŞKENİMİZE KORAY DEĞERİNİ ATIYORUZ.
+
+AD2 ADLI STRİNG VERİ TİPİNE SAHİP DEĞİŞKENE AD DEĞİŞKENİNİ ATIYORUZ.
+
+AD2 ADLI DEĞİŞKENİMİZİ KORAY BAPOĞLU OLARAK DEĞİŞTİRDİĞİMİZDE VE
+
+AD ADLI DEĞİŞKENİMİZİ EKRANA YAZDIRMAK İSTEDİĞİMİZDE REFERANS TİPİ OLSAYDI DİREK OLARAK EKRANA KORAY BAPOĞLU ÇIKTISI ALIRDIK.
+
+FAKAT STRİNG VERİ TİPİ REFERANS TİPİ AMA DEĞER OLARAK ÇALIŞTIĞI İÇİN EKRANA KORAY ÇIKTISI ALIYORUZ.
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+BU AYRIMADA VALUE AND REFERENCE TYPES DİYORUZ.
+
+-----------------------------------------------
+
