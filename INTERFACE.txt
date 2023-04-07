@@ -1,0 +1,141 @@
+INTERFACE
+---------
+INTERFACE NEDİR ?
+------------------
+
+İnterfaceler oluşturmuş olduğumuz bir sınıfın veya nesnenin belirli bir davranışı nasıl gerçekleştireceğini tanımlar.
+
+İnterface içinde tanımlamış olduğumuz metotlar ve özellikler,bu davranışları gerçekleştirmek için gereklidir.
+
+Bir sınıfın bir interface'i uygulaması o sınıfın o davranışları gerçekleştirebileceğini garanti eder.
+
+Yazmış olduğumuz kodun daha modüler ve esnek olmasını sağlar.
+
+En önemli özelliği ise bir class(sınıf)'ımızın birden çok interfaceden kalıtım almasıdır.
+
+Kullanmamızdaki en önemli sebepler kodun yeniden kullanımını arttırmak,bakım kolaylığı ve test edilebilirliktir.
+
+
+-------------------------------------------------------------------------------------------------------------------------------
+
+KULLANIMI:
+--------------
+
+IARAC ADLI İNTERFACE KODLARIMIZ:
+--------------------------------
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Interface
+{
+	internal interface IArac
+	{
+		double Hiz { get; set; }
+		void HareketEt();
+	}
+}
+
+
+--------------------------------------------------------------------------------
+
+ARABA ADLI SINIF KODLARIMIZ:
+-----------------------------
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Interface
+{
+	internal class Araba : IArac
+	{
+		public double Hiz { get; set; }
+
+		public void HareketEt()
+		{
+			Console.WriteLine("Araba Hareket Ediyor.");
+		}
+	}
+}
+
+
+-----------------------------------------------------------------------------------
+
+UCAK ADLI SINIF KODLARIMIZ:
+---------------------------
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Interface
+{
+	internal class Ucak : IArac
+	{
+		public double Hiz { get; set; }
+
+		public void HareketEt()
+		{
+			Console.WriteLine("Uçak Hareket Ediyor.");
+		}
+	}
+}
+
+
+---------------------------------------------------------------------------------------
+
+PROGRAM.CS KODLARIMIZ:
+----------------------
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Interface
+{
+	internal class Program
+	{
+		static void Main(string[] args)
+		{
+			Ucak ucak = new Ucak();
+			Araba araba = new Araba();
+			ucak.Hiz = 500;
+			araba.Hiz = 250;
+			araba.HareketEt();
+			Console.WriteLine("");
+			ucak.HareketEt();
+			Console.WriteLine("");
+			Console.WriteLine("Arabanın Hızı:"+araba.Hiz);
+			Console.WriteLine("");
+			Console.WriteLine("Uçağın Hızı:"+ucak.Hiz);
+			Console.ReadLine();
+		}
+	}
+}
+
+-------------------------------------------------------------------------------------------
+
+KODLARIN EKRAN ÇIKTISI:
+------------------------
+
+Araba Hareket Ediyor.
+
+Uçak Hareket Ediyor.
+
+Arabanın Hızı:250
+
+Uçağın Hızı:500
+
+------------------------------------------------------------------------------------------------
